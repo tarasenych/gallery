@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Slider</title>
+	<link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="container">
+		<div class="slideBlock">
+			<div class="slide">
+				<div class="slideLeft"><img src="img/point-left.png" alt="To left"></div>
+				<div class="slideRight"><img src="img/point-right.png" alt="To right"></div>
+			</div>
+		</div>
+		<div class="preview">
+			<ul>
+				<li><img src="img/1.jpg" alt=""></li>
+				<li><img src="img/2.jpg" alt=""></li>
+				<li><img src="img/3.jpg" alt=""></li>
+				<li><img src="img/1.jpg" alt=""></li>
+				<li><img src="img/2.jpg" alt=""></li>
+				<li><img src="img/3.jpg" alt=""></li>
+				<li><img src="img/1.jpg" alt=""></li>
+				<li><img src="img/2.jpg" alt=""></li>
+				<li><img src="img/3.jpg" alt=""></li>
+				<li><img src="img/1.jpg" alt=""></li>
+				<li><img src="img/2.jpg" alt=""></li>
+				<li><img src="img/3.jpg" alt=""></li>
+
+			</ul>
+		</div>
+	</div>
+	<script src="jquery-3.1.1.min.js"></script>
+	<script>
+		var preview_block = $(".preview");
+		var preview_arr = $(".preview > ul > li");
+		var slide = $(".slide");
+		var activeIndex = slideWidth = previewWidth = previewHeight = 0;
+
+		slide.append(preview_block.html());
+		preview_arr.eq(0).attr('class','active');
+
+		function motion(index){		
+			slideWidth = slide.width();
+			
+			preview_arr.removeClass('active');
+			preview_arr.eq(index).attr('class','active');
+
+			if ($( ".container" ).width() <= 1256){
+				previewWidth = preview_arr.eq(0).width();
+				preview_block.animate({scrollLeft: previewWidth * index}, 800);
+			}
+			else{
+				previewHeight = preview_arr.eq(0).height();
+				preview_block.animate({scrollTop: previewHeight * index}, 800);
+			}
+
+			slide.find("ul").animate({'right': slideWidth * index}, 800);
+		}
+		
+		$(preview_arr).on('click', function() {
+			activeIndex = $( this ).index();
+			motion( activeIndex );
+		});
+
+		$(".slideLeft").on('click', function() {
+			activeIndex -=1;
+			if (activeIndex == -1){ activeIndex = preview_arr.length - 1 }
+				motion( activeIndex );
+		});
+
+		$(".slideRight").on('click', function() {
+			activeIndex +=1;
+			if (activeIndex == preview_arr.length){ activeIndex = 0 }
+				motion( activeIndex );
+
+		});
+
+		$( window ).resize(function() {
+			slideWidth = slide.width();
+			slide.find("ul").css('right', slideWidth * activeIndex);
+
+			if ($( ".container" ).width() <= 1256){
+				previewWidth = preview_arr.eq(0).width();
+				preview_block.scrollLeft(previewWidth * activeIndex);
+			}
+			else{
+				previewHeight = preview_arr.eq(0).height();
+				preview_block.scrollTop(previewHeight * activeIndex);
+			}
+
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+.container{
+	width: 710px;
+	margin:30px auto;
+}
+
+.slide{
+	width:100%;
+	height: 400px;
+	overflow: hidden;
+	position: relative;
+}
+
+.slideRight, .slideLeft{
+	cursor: pointer;
+	position: absolute;
+	right:0;
+	z-index: 2;
+	line-height: 350px;
+	padding: 30px;
+	transition: 0.5s;
+}
+
+
+.slideLeft{
+	left:0;
+	right: inherit;
+}
+
+.slideRight:hover, .slideLeft:hover{
+	background: rgba(255,255,255,0.3);
+}
+
+
+.slide ul{
+	width:100%;
+	display: inline-block;
+	position: absolute;
+	padding: 0;
+	list-style: none;
+	white-space:nowrap;
+}
+
+.slide ul li{
+	width: 100%;
+	display: inline-block;
+	margin: 0 -2px;
+	list-style: none;
+}
+
+.slide img{
+	width:100%;
+}
+.preview{
+	width: 100%; 
+	margin-top: 11px;
+	overflow: hidden;
+	overflow-x: scroll;
+	white-space:nowrap;
+}
+
+.preview ul {
+	padding: 0;
+	text-align: center;
+	list-style: none;
+	white-space:nowrap;
+}
+
+.preview ul li{
+	display: inline-block;
+	list-style: none;
+	width: 184px;
+	cursor: pointer;
+	margin:0 10px 0 -2px;
+}
+
+.preview ul li img{
+	height: 100px;
+	width: 100%;
+	opacity: 0.32;
+}
+
+.preview ul .active img{
+	opacity: 1;
+}
+
+
+@media (max-width: 320px) {
+	.container {
+		width: 310px;
+	}
+	.slide{
+		height: 194px;
+	}
+
+	.slideRight, .slideLeft{
+		padding: 10px;
+		line-height: 174px;
+	}
+	.preview{
+		margin-top: 20px;
+		height: 65px;  
+	}
+	.preview ul li{
+		width: 25px;
+		height: 25px;
+		display: inline-block;
+		margin-right: 14px;
+		list-style: none;
+		border-radius: 25px;
+		background: #475b6d;
+	}
+	.preview ul .active{
+		background: #859eb5;
+	}
+
+	.preview ul li img{
+		display: none;
+	}
+}
+
+@media (min-width: 321px) and (max-width: 640px) {
+	.container {
+		width: 610px;
+	}
+	.slide{
+		height: 380px;
+	}
+	.slideRight, .slideLeft{
+		padding: 10px;
+		line-height: 360px;
+	}
+	.preview ul li{
+		width: 160px;
+		margin:0 7px 0 -2px;
+	}
+}
+
+
+@media (min-width: 1366px) and (max-width: 1919px){
+	.container {
+		width: 1257px;
+	}
+	
+	.slide{
+		width:960px;
+		float: left;
+		height: 600px;
+	}
+
+	.slideRight, .slideLeft{
+		line-height: 540px;
+	}
+
+	.preview{
+		width: 280px;
+		height: 545px; 
+		float: right; 
+		margin-top: 30px;
+		overflow: hidden;
+		overflow-y: scroll;
+	}
+
+	.preview ul li{
+		width: 248px;
+		height: 138px;
+		display: block;
+		margin: 0 -2px;
+	}
+
+	.preview ul li img{
+		height: 100%;
+	}
+
+
+}
+
+@media (min-width: 1920px) {
+	.container {
+		width: 1750px;
+	}
+	
+	.slide{
+		width:1320px;
+		height: 880px;
+		float: left;
+	}
+
+	.slideRight, .slideLeft{
+		line-height: 820px;
+	}
+
+	.preview{
+		width: 400px;
+		height: 800px;
+		float: right;
+		margin-top: 20px;
+		overflow: hidden;
+		overflow-y: scroll;
+	}
+
+	.preview ul li{
+		width: 340px;
+		height: 200px;
+		display: block;
+		margin: 0 -2px;
+	}
+
+	.preview ul li img{
+		height: 100%;
+	}
+
+}
